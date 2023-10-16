@@ -9,6 +9,7 @@
 int _printf(const char *format, ...)
 {
 	int printed = 0;
+	int len;
 	va_list params;
 	char c, *str;
 
@@ -48,8 +49,9 @@ int _printf(const char *format, ...)
 					case 's':
 						{
 							str = va_arg(params, char*);
-							write(1, str, strlen(str));
-							printed += strlen(str);
+							len = strlen(str);
+							write(1, str, len);
+							printed += len;
 							format++;
 							break;
 						}
