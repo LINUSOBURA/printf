@@ -35,7 +35,6 @@ int _printf(const char *format, ...)
 						{
 							write(1, format, 1);
 							printed++;
-							format++;
 							break;
 						}
 					case 'c':
@@ -43,7 +42,6 @@ int _printf(const char *format, ...)
 							c = va_arg(params, int);
 							write(1, &c, 1);
 							printed++;
-							format++;
 							break;
 						}
 					case 's':
@@ -52,16 +50,15 @@ int _printf(const char *format, ...)
 							len = strlen(str);
 							write(1, str, len);
 							printed += len;
-							format++;
 							break;
 						}
 					default:
 						write(1, format - 1, 2);
 						printed += 2;
-						format++;
 						break;
 				}
 		}
+		format++;
 	}
 
 	va_end(params);
