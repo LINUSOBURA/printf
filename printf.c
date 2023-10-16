@@ -22,30 +22,42 @@ int _printf(const char *format, ...)
 		{
 			write(1, format, 1);
 			printed++;
+			format++
 		}
 		else
 		{
 			format++;
-			if (*format == '\0')
-				break;
-			if (*format == '%')
-			{
-				write(1, format, 1);
-			}
-
-			if (*format == 'c')
-			{
-				char c = va_arg(params, int);
-				write(1, &c, 1);
-			}
-
-			if (*format == 's')
-			{
-				char *str = va_arg(params, char*);
-				write(1, str, strlen(str));
-				printed++;
-			}
-
+			switch (*format)
+				{
+					case '%':
+						{
+							write(1, format, 1);
+							printed++;
+							format++;
+							break;
+						}
+					case 'c':
+						{
+							char c = va_arg(params, int);
+							write(1, &c, 1);
+							printed++;
+							format++;
+							break;
+						}
+					case 's':
+						{
+							char *str = va_arg(params, char*);
+							write(1, str, strlen(str));
+							printed += strlen(str);
+							format++;
+							break;
+						}
+					default:
+						write(1, format -1, 2)
+						printed += 2;
+						format++;
+						break;
+				}
 		}
 	}
 
