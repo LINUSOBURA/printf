@@ -54,7 +54,7 @@ int _printf(const char *format, ...)
 							break;
 						}
 					default:
-						write(1, format -1, 2);
+						write(1, format - 1, 2);
 						printed += 2;
 						format++;
 						break;
