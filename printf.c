@@ -50,7 +50,7 @@ int _printf(const char *format, ...)
 						{
 							str = va_arg(params, char*);
 							if (str == NULL)
-								str = "(null)';
+								break;
 							len = strlen(str);
 							write(1, str, len);
 							printed += len;
