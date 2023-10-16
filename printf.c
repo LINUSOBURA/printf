@@ -10,6 +10,7 @@ int _printf(const char *format, ...)
 {
 	int printed = 0;
 	va_list params;
+	char c, *str;
 
 	va_start(params, format);
 
@@ -38,7 +39,7 @@ int _printf(const char *format, ...)
 						}
 					case 'c':
 						{
-							char c = va_arg(params, int);
+							c = va_arg(params, int);
 							write(1, &c, 1);
 							printed++;
 							format++;
@@ -46,7 +47,7 @@ int _printf(const char *format, ...)
 						}
 					case 's':
 						{
-							char *str = va_arg(params, char*);
+							str = va_arg(params, char*);
 							write(1, str, strlen(str));
 							printed += strlen(str);
 							format++;
