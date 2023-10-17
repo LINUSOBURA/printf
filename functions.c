@@ -42,7 +42,7 @@ void recursive_print_integer(int n, int *count)
 void handle_integer(va_list args)
 {
 	int num = va_arg(args, int);
-	int localCount = 0;
+	int local_count = 0;
 	
 	if (num == 0)
 	{
