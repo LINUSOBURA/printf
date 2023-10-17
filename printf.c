@@ -2,8 +2,8 @@
 FormatHandler handlers[] = {
 	{'s', handle_string},
 	{'c', handle_char},
-	{'d', handle_d},
-	{'i', handle_i},
+	{'d', handle_integer},
+	{'i', handle_integer},
 	{0, NULL}
 };
 /**
