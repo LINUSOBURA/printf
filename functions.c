@@ -64,7 +64,7 @@ int handle_integer(va_list args)
 		}
 		else
 		{
-			num = -num
+			num = -num;
 		}
 		local_count++;
 	}
