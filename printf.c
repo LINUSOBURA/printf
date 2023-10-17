@@ -13,7 +13,7 @@ int _printf(const char *format, ...)
 
 	va_start(params, format);
 	if (format == NULL)
-		return (-1);
+		return (0);
 	for (p = (char *)format; *p; p++)
 	{
 		if (*p != '%')
@@ -37,24 +37,24 @@ int _printf(const char *format, ...)
 					putchar(*s_val);
 					count++;
 				}
-					break;
-					case '%':
-					putchar('%');
-					count++;
-					break;
-					case '\0':
-					putchar('%');
-					count++;
-					p--;
-					break;
-					default:
-					putchar('%');
-					putchar(*p);
-					count += 2;
-					break;
-					}
+				break;
+				case '%':
+				putchar('%');
+				count++;
+				break;
+				case '\0':
+				putchar('%');
+				count++;
+				p--;
+				break;
+				default:
+				putchar('%');
+				putchar(*p);
+				count += 2;
+				break;
+			}
 			
-				}
-				va_end(params);
-				return (count);
+		}
+		va_end(params);
+		return (count);
 }
