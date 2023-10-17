@@ -1,4 +1,11 @@
 #include "main.h"
+FormatHandler handlers[] = {
+	{'s', handle_string},
+	{'c', handle_char},
+	{'d', handle_d},
+	{'i', handle_i},
+	{0, NULL}
+};
 /**
 * _printf - function to print everything to stdout
 * @format: format string
@@ -7,48 +14,39 @@
 */
 int _printf(const char *format, ...)
 {
-	int count = 0;
-	va_list params;
-	const char *p, *s_val;
+	int i;
+	cont char *p;
+	va_list args;
+	va_start(args, format);
 
-	va_start(params, format);
-	if (format == NULL)
-		return (-1);
-	for (p = format; *p; p++)
-	{
-		if (*p != '%')
+	for (p = format; *p; ++p)
 		{
-			putchar(*p);
-			count++;
-			continue;
-		}
-		switch (*++p)
+			if (*p != '%')
 			{
-				case 'c':
-				putchar(va_arg(params, int));
+				putchar(*p);
 				count++;
-				break;
-				case 's':
-				s_val = va_arg(params, char *);
-				if (!s_val)
-					s_val = "(null)";
-				for (; *s_val; s_val++)
+				continue;
+			}
+
+			p++;
+
+			FormatHandler *handler = NULL;
+			for (i = 0; handlers[i].handler != NULL; ++i)
 				{
-					putchar(*s_val);
-					count++;
+					if (handlers[i].specifier == *p)
+					{
+						handler = &handlers[i];
+						break
+					}
 				}
-				break;
-				case '%':
-				putchar('%');
+			if (handler)
+				handler->handler(args);
 				count++;
-				break;
-				default:
+			else
+			{
 				putchar('%');
 				putchar(*p);
 				count += 2;
-				break;
 			}
 		}
-		va_end(params);
-		return (count);
 }
