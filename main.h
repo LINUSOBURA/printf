@@ -7,7 +7,7 @@
 
 typedef struct FormatHandler {
 	char specifier;
-	void (*handler)(va_list args);
+	int (*handler)(va_list args);
 } FormatHandler;
 
 int _printf(const char *format, ...);
