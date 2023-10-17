@@ -1,16 +1,4 @@
 #include "main.h"
-FormatHandler handlers[] = {
-	{'s', handle_string},
-	{'c', handle_char},
-	{'d', handle_integer},
-	{'i', handle_integer},
-	{'b', handle_binary},
-	{'u', handle_unsigned},
-    	{'o', handle_octal},
-    	{'x', handle_hex_lower},
-    	{'X', handle_hex_upper},
-	{0, NULL}
-};
 
 /**
 * _printf - function to print everything to stdout
@@ -23,58 +11,53 @@ int _printf(const char *format, ...)
 	int i, count = 0;
 	const char *p;
 	va_list args;
+	FormatHandler handlers[] = {
+	{'s', handle_string},
+	{'c', handle_char},
+	{'d', handle_integer},
+	{'i', handle_integer},
+	{'b', handle_binary},
+	{'u', handle_unsigned},
+    	{'o', handle_octal},
+    	{'x', handle_hex_lower},
+    	{'X', handle_hex_upper},
+	{0, NULL}
+	};
+
 	FormatHandler *handler = NULL;
 
 	va_start(args, format);
-
-	if (!format)
+	for (; *format; format++)
 	{
-		return (-1);
-	}
-	for (p = format; *p; ++p)
+		if (*format == '%' && (*(format + 1) == 'c' || *(format + 1) == 's' || *(format + 1) == '%'))
 		{
-			handler = NULL;
-			if (*p != '%')
-			{
-				putchar(*p);
-				count++;
-				continue;
-			}
+			format++;
 
-			p++;
-
-			if (*p == '0')
-			{
-				putchar('%');
-				count++;
-				return (count);
-			}
-			else if (*p == '%')
+			if (*format == '%')
 			{
 				putchar('%');
 				count++;
 				continue;
 			}
 
-			for (i = 0; handlers[i].handler != NULL; ++i)
+			for (int i = 0; handlers[i].handler; i++)
+			{
+				if (handlers[i].specifier == *format)
 				{
-					if (handlers[i].specifier == *p)
-					{
-						handler = &handlers[i];
-						break;
-					}
+					count += handlers[i].handler(args);
+					break;
 				}
-			if (handler)
-			{
-				count += handler->handler(args);
 			}
-			else
-			{
-				putchar('%');
-				putchar(*p);
-				count += 2;
-			}
+		} 
+		else
+		{
+			putchar(*format);
+			count++;
 		}
-		va_end(args);
-		return (count);
+	}
+
+    va_end(args);
+    return count;
+}
+	
 }
