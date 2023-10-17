@@ -32,6 +32,7 @@ void print_integer(int n)
 {
 	if (n == 0)
 	{
+		putchar('0');
 		return;
 	}
 	if (n < 0)
@@ -39,11 +40,15 @@ void print_integer(int n)
 		putchar ('-');
 		n = -n;
 	}
+	recursive_print_integer(n / 10);
+}
+
+void recursive_print_integer(int n)
+{
 	if (n / 10)
 	{
-		print_integer(n / 10);
+		recursive_print_integer(n / 10);
 	}
-
 	putchar((n % 10) + '0');
 }
 
