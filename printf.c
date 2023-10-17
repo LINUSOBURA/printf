@@ -23,7 +23,6 @@ int _printf(const char *format, ...)
 			continue;
 		}
 		switch (*++p)
-		if (*p != '\0')
 			{
 				case 'c':
 				putchar(va_arg(params, int));
