@@ -16,7 +16,7 @@ int handle_hex(va_list args, int uppercase)
 
 void recursive_print_hex(unsigned int n, int uppercase, int *count)
 {
-	char hex_chars[] = uppercase ? "0123456789ABCDEF" : "0123456789abcdef";
+	char *hex_chars = uppercase ? "0123456789ABCDEF" : "0123456789abcdef";
 
 	if (n / 16)
 	{
