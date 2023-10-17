@@ -49,7 +49,7 @@ void print_integer(int n)
 
 void handle_integer(va_list args)
 {
-	int num = va_arg(args, int)
+	int num = va_arg(args, int);
 	if (num == 0)
 	{
 		putchar('0');
