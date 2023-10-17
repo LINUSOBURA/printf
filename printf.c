@@ -14,7 +14,7 @@ FormatHandler handlers[] = {
 */
 int _printf(const char *format, ...)
 {
-	int i count = 0;
+	int i, count = 0;
 	const char *p;
 	va_list args;
 	FormatHandler *handler = NULL;
