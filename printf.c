@@ -30,7 +30,8 @@ int _printf(const char *format, ...)
 				break;
 				case 's':
 				s_val = va_arg(params, char *);
-				(!s_val) ? s_val = "(null)" : continue;
+				if (!s_val)
+					s_val = "(null)";
 				for (; *s_val; s_val++)
 				{
 					putchar(*s_val);
