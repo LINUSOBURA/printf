@@ -23,7 +23,7 @@ int handle_string(va_list args)
  */
 int handle_char(va_list args)
 {
-	char c = (char) va_arg(args, int);
+	char c = va_arg(args, int);
 	putchar(c);
 	return (1);
 }
