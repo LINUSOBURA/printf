@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 
 	if (!format)
 	{
-		return(-1)
+		return(-1);
 	}
 	for (p = format; *p; ++p)
 		{
