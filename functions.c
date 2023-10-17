@@ -28,39 +28,35 @@ void handle_char(va_list args)
  * handle_char - function to handle char format
  * @va_list: list of arguments
  */
-void print_integer(int n)
-{
-	if (n == 0)
-	{
-		putchar('0');
-		return;
-	}
-	if (n < 0)
-	{
-		putchar ('-');
-		n = -n;
-	}
-	recursive_print_integer(n / 10);
-}
 
-void recursive_print_integer(int n)
+void recursive_print_integer(int n, int *count)
 {
 	if (n / 10)
 	{
-		recursive_print_integer(n / 10);
+		recursive_print_integer(n / 10, count);
 	}
 	putchar((n % 10) + '0');
+	(*count)++;
 }
 
 void handle_integer(va_list args)
 {
 	int num = va_arg(args, int);
+	int localCount = 0;
+	
 	if (num == 0)
 	{
 		putchar('0');
-		return;
+		return 1;
 	}
 
-	print_integer(num);
-	putchar('0');
+	if (num < 0)
+	{
+		putchar('-');
+		num = -num;
+		local_count++;
+	}
+
+	recursive_print_integer(num, &local_count);
+	return (local_count);
 }
