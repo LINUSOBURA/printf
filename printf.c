@@ -18,12 +18,12 @@ int _printf(const char *format, ...)
 	const char *p;
 	va_list args;
 	FormatHandler *handler = NULL;
-	
+
 	va_start(args, format);
 
 	if (!format)
 	{
-		return(-1);
+		return (-1);
 	}
 	for (p = format; *p; ++p)
 		{
@@ -41,7 +41,7 @@ int _printf(const char *format, ...)
 			{
 				putchar('%');
 				count++;
-				return count;
+				return (count);
 			}
 			else if (*p == '%')
 			{
@@ -70,5 +70,5 @@ int _printf(const char *format, ...)
 			}
 		}
 		va_end(args);
-		return(count);
+		return (count);
 }
