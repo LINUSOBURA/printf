@@ -1,11 +1,5 @@
 #include "main.h"
-FormatHandler handlers[] = {
-	{'s', handle_string},
-	{'c', handle_char},
-	{'d', handle_integer},
-	{'i', handle_integer},
-	{0, NULL}
-};
+
 /**
 * _printf - function to print everything to stdout
 * @format: format string
