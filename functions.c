@@ -58,6 +58,14 @@ int handle_integer(va_list args)
 	{
 		putchar('-');
 		num = -num;
+		if (num == INT_MIN)
+		{
+			num = INT_MAX;
+		}
+		else
+		{
+			num = -num
+		}
 		local_count++;
 	}
 
