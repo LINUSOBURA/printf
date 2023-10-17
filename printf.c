@@ -12,7 +12,7 @@ int _printf(const char *format, ...)
 	char *p, *s_val;
 	
 	va_start(params, format);
-	for (p = format; *p; p++)
+	for (p = (char*)format; *p; p++)
 	{
 		if (*p != '%') 
 		{
