@@ -23,36 +23,38 @@ int _printf(const char *format, ...)
 			continue;
 		}
 		switch (*++p)
-		{
-			case 'c':
-			putchar(va_arg(params, int));
-			count++;
-			break;
-			case 's':
-			s_val = va_arg(params, char *);
-			if (!s_val)
-				s_val = "(null)";
-			for (; *s_val; s_val++)
+		if (*p != '\0')
 			{
-				putchar(*s_val);
-				count++;
-			}
-				break;
-				case '%':
-				putchar('%');
+				case 'c':
+				putchar(va_arg(params, int));
 				count++;
 				break;
-				case '\0':
-				putchar('%');
-				count++;
-				p--;
-				break;
-				default:
-				putchar('%');
-				putchar(*p);
-				count += 2;
-				break;
+				case 's':
+				s_val = va_arg(params, char *);
+				if (!s_val)
+					s_val = "(null)";
+				for (; *s_val; s_val++)
+				{
+					putchar(*s_val);
+					count++;
 				}
+					break;
+					case '%':
+					putchar('%');
+					count++;
+					break;
+					case '\0':
+					putchar('%');
+					count++;
+					p--;
+					break;
+					default:
+					putchar('%');
+					putchar(*p);
+					count += 2;
+					break;
+					}
+			
 				}
 				va_end(params);
 				return (count);
