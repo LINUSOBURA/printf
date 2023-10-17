@@ -5,13 +5,15 @@
  */
 void handle_string(va_list args)
 {
+	int local_count = 0;
+	
 	char *str = va_arg(args, char *);
 	if (!str)
 		str = "(null)";
 	while (*str)
 		{
-			putchar(*str);
-			str++;
+			putchar(*str++);
+			local_count++;
 		}
 }
 /**
@@ -22,6 +24,7 @@ void handle_char(va_list args)
 {
 	char c = (char) va_arg(args, int);
 	putchar(c);
+	return 1;
 }
 
 /**
