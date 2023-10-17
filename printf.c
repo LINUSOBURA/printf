@@ -46,6 +46,7 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
+				putchar('%');
 				putchar(*p);
 				count += 2;
 			}
