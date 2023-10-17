@@ -42,11 +42,7 @@ int _printf(const char *format, ...)
 				putchar('%');
 				count++;
 				break;
-				case '\0':
-				putchar('%');
-				count++;
-				p--;
-				break;
+
 				default:
 				putchar('%');
 				putchar(*p);
