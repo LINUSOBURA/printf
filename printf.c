@@ -17,11 +17,11 @@ int _printf(const char *format, ...)
 	{'i', handle_integer},
 	{'b', handle_binary},
 	{'u', handle_unsigned},
-    	{'o', handle_octal},
-    	{'x', handle_hex_lower},
-    	{'X', handle_hex_upper},
+	{'o', handle_octal},
+	{'x', handle_hex_lower},
+	{'X', handle_hex_upper},
 	{0, NULL}
-	};
+};
 
 	va_start(args, format);
 	for (; *format; format++)
@@ -45,7 +45,7 @@ int _printf(const char *format, ...)
 					break;
 				}
 			}
-		} 
+		}
 		else
 		{
 			putchar(*format);
@@ -54,5 +54,5 @@ int _printf(const char *format, ...)
 	}
 
     va_end(args);
-    return count;
+    return (count);
 }
