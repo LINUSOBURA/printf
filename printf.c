@@ -15,10 +15,13 @@ FormatHandler handlers[] = {
 int _printf(const char *format, ...)
 {
 	int i;
-	cont char *p;
+	const char *p;
 	va_list args;
+	count = 0;
+	FormatHandler *handler = NULL;
+	
 	va_start(args, format);
-
+	
 	for (p = format; *p; ++p)
 		{
 			if (*p != '%')
@@ -30,18 +33,19 @@ int _printf(const char *format, ...)
 
 			p++;
 
-			FormatHandler *handler = NULL;
 			for (i = 0; handlers[i].handler != NULL; ++i)
 				{
 					if (handlers[i].specifier == *p)
 					{
 						handler = &handlers[i];
-						break
+						break;
 					}
 				}
 			if (handler)
+			{
 				handler->handler(args);
 				count++;
+			}
 			else
 			{
 				putchar('%');
@@ -49,4 +53,6 @@ int _printf(const char *format, ...)
 				count += 2;
 			}
 		}
+	va_end(args);
+	return(count);
 }
