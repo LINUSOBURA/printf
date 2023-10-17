@@ -3,7 +3,7 @@
  * handle_string - function to handle string format
  * @va_list: list of arguments
  */
-void handle_string(va_list args)
+int handle_string(va_list args)
 {
 	int local_count = 0;
 	
@@ -32,7 +32,7 @@ void handle_char(va_list args)
  * @va_list: list of arguments
  */
 
-void recursive_print_integer(int n, int *count)
+int recursive_print_integer(int n, int *count)
 {
 	if (n / 10)
 	{
