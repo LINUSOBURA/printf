@@ -6,15 +6,6 @@
 #include <stdio.h>
 #include <limits.h>
 
-FormatHandler handlers[] = {
-	{'s', handle_string},
-	{'c', handle_char},
-	{'d', handle_integer},
-	{'i', handle_integer},
-	{'b', handle_binary},
-	{0, NULL}
-};
-
 typedef struct FormatHandler {
 	char specifier;
 	int (*handler)(va_list args);
