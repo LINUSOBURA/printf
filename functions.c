@@ -57,7 +57,7 @@ int handle_integer(va_list args)
 	if (num < 0)
 	{
 		putchar('-');
-		num = -num;
+		local_count++;
 		if (num == INT_MIN)
 		{
 			num = INT_MAX;
@@ -66,7 +66,6 @@ int handle_integer(va_list args)
 		{
 			num = -num;
 		}
-		local_count++;
 	}
 
 	recursive_print_integer(num, &local_count);
