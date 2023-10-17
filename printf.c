@@ -23,8 +23,6 @@ int _printf(const char *format, ...)
 	{0, NULL}
 	};
 
-	FormatHandler *handler = NULL;
-
 	va_start(args, format);
 	for (; *format; format++)
 	{
