@@ -42,14 +42,12 @@ int _printf(const char *format, ...)
 				putchar('%');
 				count++;
 				break;
-
 				default:
 				putchar('%');
 				putchar(*p);
 				count += 2;
 				break;
 			}
-			
 		}
 		va_end(params);
 		return (count);
