@@ -14,10 +14,9 @@ FormatHandler handlers[] = {
 */
 int _printf(const char *format, ...)
 {
-	int i;
+	int i count = 0;
 	const char *p;
 	va_list args;
-	count = 0;
 	FormatHandler *handler = NULL;
 	
 	va_start(args, format);
@@ -53,6 +52,6 @@ int _printf(const char *format, ...)
 				count += 2;
 			}
 		}
-	va_end(args);
-	return(count);
+		va_end(args);
+		return(count);
 }
