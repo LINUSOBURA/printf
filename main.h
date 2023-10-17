@@ -14,7 +14,7 @@ int _printf(const char *format, ...);
 int handle_integer(va_list args);
 int handle_string(va_list args);
 int handle_char(va_list args);
-int recursive_print_integer(int n, int *count);
+void recursive_print_integer(int n, int *count);
 extern FormatHandler handlers[];
 
 #endif
