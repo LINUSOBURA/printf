@@ -32,7 +32,7 @@ int _printf(const char *format, ...)
 			for (s_val = va_arg(params, char *); *s_val; s_val++)
 			{
 				if (!s_val)
-					s_val = "(null)"
+					s_val = "(null)";
 				putchar(*s_val);
 				count++;
 			}
