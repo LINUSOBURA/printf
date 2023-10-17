@@ -9,12 +9,12 @@ int _printf(const char *format, ...)
 {
 	int count = 0;
 	va_list params;
-	char *p, *s_val;
+	const char *p, *s_val;
 
 	va_start(params, format);
 	if (format == NULL)
 		return (-1);
-	for (p = (char *)format; *p; p++)
+	for (p = format; *p; p++)
 	{
 		if (*p != '%')
 		{
