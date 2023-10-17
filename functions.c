@@ -20,11 +20,11 @@ int handle_string(va_list args)
  * handle_char - function to handle char format
  * @va_list: list of arguments
  */
-void handle_char(va_list args)
+int handle_char(va_list args)
 {
 	char c = (char) va_arg(args, int);
 	putchar(c);
-	return 1;
+	return (1);
 }
 
 /**
