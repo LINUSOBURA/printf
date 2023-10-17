@@ -22,6 +22,10 @@ int _printf(const char *format, ...)
 			count++;
 			continue;
 		}
+		if (*(p + 1) == '\0')
+		{
+			continue;
+		}
 		switch (*++p)
 			{
 				case 'c':
