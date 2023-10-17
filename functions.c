@@ -12,7 +12,6 @@ void handle_string(va_list args)
 		{
 			putchar(*str);
 			str++;
-			counter++;
 		}
 }
 /**
@@ -21,12 +20,42 @@ void handle_string(va_list args)
  */
 void handle_char(va_list args)
 {
-	char c = (char) va_args(args, int);
+	char c = (char) va_arg(args, int);
 	putchar(c);
 }
 
-void handle_d(va_list args)
+/**
+ * handle_char - function to handle char format
+ * @va_list: list of arguments
+ */
+void print_integer(int n)
 {
-	int d = va_arg(args, int);
-	putchar(d);
+	if (n == 0)
+	{
+		return;
+	}
+	if (n < 0)
+	{
+		putchar ('-');
+		n = -n;
+	}
+	if (n / 10)
+	{
+		print_integer(n / 10);
+	}
+
+	putchar((n % 10) + '0');
+}
+
+void handle_integer(va_list args)
+{
+	int num = va_arg(args, int)
+	if (num == 0)
+	{
+		putchar('0');
+		return;
+	}
+
+	print_integer(num);
+	putchar('0');
 }
