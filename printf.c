@@ -9,7 +9,6 @@
 int _printf(const char *format, ...)
 {
 	int i, count = 0;
-	const char *p;
 	va_list args;
 	FormatHandler handlers[] = {
 	{'s', handle_string},
@@ -40,7 +39,7 @@ int _printf(const char *format, ...)
 				continue;
 			}
 
-			for (int i = 0; handlers[i].handler; i++)
+			for (i = 0; handlers[i].handler; i++)
 			{
 				if (handlers[i].specifier == *format)
 				{
@@ -58,6 +57,4 @@ int _printf(const char *format, ...)
 
     va_end(args);
     return count;
-}
-	
 }
