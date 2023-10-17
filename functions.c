@@ -15,6 +15,7 @@ int handle_string(va_list args)
 			putchar(*str++);
 			local_count++;
 		}
+	return(local_count);
 }
 /**
  * handle_char - function to handle char format
@@ -32,7 +33,7 @@ int handle_char(va_list args)
  * @va_list: list of arguments
  */
 
-int recursive_print_integer(int n, int *count)
+void recursive_print_integer(int n, int *count)
 {
 	if (n / 10)
 	{
