@@ -5,17 +5,18 @@
  */
 int handle_string(va_list args)
 {
-	int local_count = 0;
-	
 	char *str = va_arg(args, char *);
+	int count = 0;
+
 	if (!str)
 		str = "(null)";
-	while (*str)
-		{
-			putchar(*str++);
-			local_count++;
-		}
-	return(local_count);
+
+	for (; *str; str++, count++)
+	{
+		putchar(*str);
+	}
+
+	return count;
 }
 /**
  * handle_char - function to handle char format
