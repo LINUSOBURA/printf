@@ -20,9 +20,14 @@ int _printf(const char *format, ...)
 	FormatHandler *handler = NULL;
 	
 	va_start(args, format);
-	
+
+	if (!format)
+	{
+		return(-1)
+	}
 	for (p = format; *p; ++p)
 		{
+			handler = NULL;
 			if (*p != '%')
 			{
 				putchar(*p);
