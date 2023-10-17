@@ -42,8 +42,7 @@ int _printf(const char *format, ...)
 				}
 			if (handler)
 			{
-				handler->handler(args);
-				count++;
+				count += handler->handler(args);
 			}
 			else
 			{
