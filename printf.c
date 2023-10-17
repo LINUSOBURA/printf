@@ -7,8 +7,8 @@ FormatHandler handlers[] = {
 	{'b', handle_binary},
 	{'u', handle_unsigned},
     	{'o', handle_octal},
-    	{'x', (int (*)(va_list)) handle_hex},
-    	{'X', (int (*)(va_list)) handle_hex},
+    	{'x', handle_hex_lower},
+    	{'X', handle_hex_upper},
 	{0, NULL}
 };
 
