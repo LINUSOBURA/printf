@@ -31,12 +31,24 @@ int _printf(const char *format, ...)
 			if (*p != '%')
 			{
 				putchar(*p);
-				printf("\n[DEBUG] Char: %c, Cumulative Count: %d", *p, count);
 				count++;
 				continue;
 			}
 
 			p++;
+
+			if (*p == '0')
+			{
+				putchar('%');
+				count++;
+				return count;
+			}
+			else if (*p == '%')
+			{
+				putchar('%');
+				count++;
+				continue;
+			}
 
 			for (i = 0; handlers[i].handler != NULL; ++i)
 				{
