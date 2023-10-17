@@ -1,71 +1,49 @@
 #include "main.h"
-
 /**
- * _printf - function to print everything to the stdout
- * @format: character string
- * Return: numbers of printed characters
- * Code by Linus Obura & Felix Mukah
- */
+_printf - function to print everything to stdout
+@format: format string
+Return: numbers of printed characters
+Code by Linus Obura & Felix Mukah, refactored
+*/
 int _printf(const char *format, ...)
 {
-	int printed = 0;
-	int len;
+	int count = 0;
 	va_list params;
-	char c, *str;
-
+	char *p, *s_val;
+	
 	va_start(params, format);
-
-	if (format == NULL)
-		return (-1);
-
-	while (*format)
+	for (p = format; *p; p++)
 	{
-		if (*format != '%')
+		if (*p != '%') 
 		{
-			write(1, format, 1);
-			printed++;
-			format++;
+			putchar(*p);
+			count++;
+			continue;
 		}
-		else
+		switch (*++p)
 		{
-			format++;
-			switch (*format)
-				{
-					case '%':
-						{
-							write(1, format, 1);
-							printed++;
-							format++;
-							break;
-						}
-					case 'c':
-						{
-							c = va_arg(params, int);
-							write(1, &c, 1);
-							printed++;
-							format++;
-							break;
-						}
-					case 's':
-						{
-							str = va_arg(params, char*);
-							if (str == NULL)
-								break;
-							len = strlen(str);
-							write(1, str, len);
-							printed += len;
-							format++;
-							break;
-						}
-					default:
-						write(1, format - 1, 2);
-						printed += 2;
-						format++;
-						break;
+			case 'c':
+			putchar(va_arg(params, int));
+			count++;
+			break;
+			case 's':
+			for (s_val = va_arg(params, char *); *s_val; s_val++)
+			{
+				putchar(*s_val);
+				count++;
+			}
+				break;
+				case '%':
+				putchar('%');
+				count++;
+				break;
+				default:
+				putchar('%');
+				putchar(*p);
+				count+=2;
+				break;
 				}
-		}
-	}
-
-	va_end(params);
-	return (printed);
+				}
+				va_end(params);
+				return count;
 }
