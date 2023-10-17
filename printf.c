@@ -12,6 +12,8 @@ int _printf(const char *format, ...)
 	char *p, *s_val;
 
 	va_start(params, format);
+	if (format == NULL)
+		return (-1);
 	for (p = (char *)format; *p; p++)
 	{
 		if (*p != '%')
@@ -27,10 +29,10 @@ int _printf(const char *format, ...)
 			count++;
 			break;
 			case 's':
-			if (!s_val)
-				s_val = "(null)";
 			for (s_val = va_arg(params, char *); *s_val; s_val++)
 			{
+				if (!s_val)
+					s_val = "(null)"
 				putchar(*s_val);
 				count++;
 			}
