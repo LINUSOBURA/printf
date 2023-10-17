@@ -25,3 +25,13 @@ void recursive_print_hex(unsigned int n, int uppercase, int *count)
 	putchar(hex_chars[n % 16]);
 	(*count)++;
 }
+
+int handle_hex_lower(va_list args)
+{
+	return handle_hex(args, 0);
+}
+
+int handle_hex_upper(va_list args)
+{
+	return handle_hex(args, 1);
+}
