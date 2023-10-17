@@ -31,6 +31,7 @@ int _printf(const char *format, ...)
 			if (*p != '%')
 			{
 				putchar(*p);
+				printf("\n[DEBUG] Char: %c, Cumulative Count: %d", *p, count);
 				count++;
 				continue;
 			}
