@@ -74,7 +74,7 @@ int handle_integer(va_list args)
 	if (num == 0)
 	{
 		putchar('0');
-		return(1);
+		return (1);
 	}
 
 	recursive_print_integer(num, &local_count);
