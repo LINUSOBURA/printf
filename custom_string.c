@@ -1,6 +1,8 @@
 #include "main.h"
 int handle_custom_string(va_list args)
 {
+	int count = 0;
+
 	char *str = va_arg(args, char *);
 	if (!str)
 		str = "(null)";
