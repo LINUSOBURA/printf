@@ -1,7 +1,8 @@
 #include "main.h"
 /**
  * handle_string - function to handle string format
- * @va_list: list of arguments
+ * @args: list of arguments
+ * Return: count
  */
 int handle_string(va_list args)
 {
@@ -16,22 +17,25 @@ int handle_string(va_list args)
 		putchar(*str);
 	}
 
-	return count;
+	return (count);
 }
 /**
  * handle_char - function to handle char format
- * @va_list: list of arguments
+ * @args: list of arguments
+ * Return: count
  */
 int handle_char(va_list args)
 {
 	char c = va_arg(args, int);
+	
 	putchar(c);
 	return (1);
 }
 
 /**
- * handle_char - function to handle char format
- * @param: list of arguments
+ * recursive_print_integer - function to handle char format
+ * @n: integer
+ * @count: conts of printed ints
  */
 
 void recursive_print_integer(int n, int *count)
@@ -58,6 +62,12 @@ void recursive_print_integer(int n, int *count)
 	putchar((n % 10) + '0');
 	(*count)++;
 }
+
+/**
+ * handle_integer - function to handle char format
+ * @args: list of arguments
+ * Return: count
+ */
 
 int handle_integer(va_list args)
 {
