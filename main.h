@@ -26,7 +26,7 @@ int handle_octal(va_list args);
 void recursive_print_octal(unsigned int n, int *count);
 int handle_hex_lower(va_list args);
 int handle_hex_upper(va_list args);
-handle_custom_string(va_list args);
+int handle_custom_string(va_list args);
 
 extern FormatHandler handlers[];
 
