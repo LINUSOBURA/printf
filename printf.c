@@ -1,5 +1,5 @@
 #include "main.h"
-
+int is_valid_specifier(char c);
 /**
 * _printf - function to print everything to stdout
 * @format: format string
@@ -17,17 +17,13 @@ int _printf(const char *format, ...)
 		return (-1);
 	for (; *format; format++)
 	{
-		if (*format == '%' && (*(format + 1) == 'c' || *(format + 1) == 's'
-			|| *(format + 1) == '%' || *(format + 1) == 'd' || *(format + 1) == 'i'
-			|| *(format + 1) == 'b' || *(format + 1) == 'x' || *(format + 1) == 'X'))
+		if (*format == '%' && is_valid_specifier(*(format + 1)))
 		{
 			format++;
 
-			if (*format == '%' && *(format + 1) == '\0')
-				return (count);
-			if (*format == '%' && *(format + 1) == '%')
+			if (*format == '%')
 			{
-				putchar('%%');
+				putchar('%');
 				count++;
 				continue;
 			}
@@ -41,6 +37,10 @@ int _printf(const char *format, ...)
 				}
 			}
 		}
+		else if (*format == '%' && *(format + 1) == '\0')
+		{
+			return (count);
+		}
 		else
 		{
 			putchar(*format);
@@ -49,4 +49,17 @@ int _printf(const char *format, ...)
 	}
 	va_end(args);
 	return (count);
+}
+
+int is_valid_specifier(char c)
+{
+	int i;
+
+	char valid_specifiers[] = "cs%dibxX";
+	for (i = 0; valid_specifiers[i]; i++)
+		{
+			if (c == valid_specifiers[i])
+				return (1);
+		}
+	return (0);
 }
