@@ -4,7 +4,7 @@ int handle_custom_string(va_list args)
 	char *str = va_arg(args, char *);
 	if (!str)
 		str = "(null)";
-	whle (*str)
+	while (*str)
 	{
 		if ((*str > 0 && *str < 32) || *str >= 127)
 		{
