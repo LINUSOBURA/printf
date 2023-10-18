@@ -17,9 +17,15 @@ int _printf(const char *format, ...)
 		return (-1);
 	for (; *format; format++)
 	{
-		if (*format == '%' && is_valid_specifier(*(format + 1)))
+		if (*format == '%')
 		{
 			format++;
+
+			if (*format == '\0')
+			{
+				va_end(args);
+				return (count);
+			}
 
 			if (*format == '%')
 			{
@@ -36,10 +42,6 @@ int _printf(const char *format, ...)
 					break;
 				}
 			}
-		}
-		else if (*format == '%' && *(format + 1) == '\0')
-		{
-			return (count);
 		}
 		else
 		{
