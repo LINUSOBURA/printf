@@ -10,6 +10,7 @@ int _printf(const char *format, ...)
 {
 	int i, count = 0;
 	va_list args;
+	int handler_found;
 
 	va_start(args, format);
 
@@ -23,24 +24,25 @@ int _printf(const char *format, ...)
 
 			if (*format == '\0')
 			{
-				va_end(args);
-				return (count);
+				break;
 			}
-
-			if (*format == '%')
-			{
-				putchar('%');
-				count++;
-				continue;
-			}
+			handler_fount = 0;
 
 			for (i = 0; handlers[i].handler; i++)
 			{
 				if (handlers[i].specifier == *format)
 				{
 					count += handlers[i].handler(args);
+					handler_found = 1;
 					break;
 				}
+			}
+
+			if (!handler_found)
+			{
+				putchar('%');
+				putchar(*format);
+				count += 2;
 			}
 		}
 		else
