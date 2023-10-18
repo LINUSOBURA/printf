@@ -22,9 +22,15 @@ int _printf(const char *format, ...)
 		{
 			format++;
 
-			if (*format == '\0')
+			if (*format == '%')
 			{
-				break;
+				putchar('%');
+				count++;
+				continue;
+			}
+			else if (*format == '\0')
+			{
+				return (-1);
 			}
 			handler_found = 0;
 
@@ -59,7 +65,7 @@ int is_valid_specifier(char c)
 {
 	int i;
 
-	char valid_specifiers[] = "csdibxX";
+	char valid_specifiers[] = "cs%dibxX";
 	for (i = 0; valid_specifiers[i]; i++)
 		{
 			if (c == valid_specifiers[i])
