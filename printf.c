@@ -23,7 +23,9 @@ int _printf(const char *format, ...)
 		{
 			format++;
 
-			if (*format == '%')
+			if (*format == '%' && *(format + 1) == '\0')
+				return (count);
+			if (*format == '%' && *(format + 1) == '%')
 			{
 				putchar('%');
 				count++;
