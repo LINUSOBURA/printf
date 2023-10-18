@@ -40,9 +40,6 @@ int handle_char(va_list args)
 
 void recursive_print_integer(int n, int *count)
 {
-	if (n == 0)
-		return;
-
 	if (n < 0)
 	{
 		putchar('-');
@@ -73,6 +70,12 @@ int handle_integer(va_list args)
 {
 	int num = va_arg(args, int);
 	int local_count = 0;
+
+	if (num == 0)
+	{
+		putchar('0');
+		return(1);
+	}
 
 	recursive_print_integer(num, &local_count);
 	return (local_count);
