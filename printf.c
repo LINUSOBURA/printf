@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 			{
 				break;
 			}
-			handler_fount = 0;
+			handler_found = 0;
 
 			for (i = 0; handlers[i].handler; i++)
 			{
@@ -59,7 +59,7 @@ int is_valid_specifier(char c)
 {
 	int i;
 
-	char valid_specifiers[] = "cs%dibxX";
+	char valid_specifiers[] = "csdibxX";
 	for (i = 0; valid_specifiers[i]; i++)
 		{
 			if (c == valid_specifiers[i])
