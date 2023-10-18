@@ -41,7 +41,7 @@ int handle_char(va_list args)
 void recursive_print_integer(int n, int *count)
 {
 	if (n == 0)
-		return;
+		return(0);
 
 	if (n < 0)
 	{
