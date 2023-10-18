@@ -26,7 +26,9 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	for (; *format; format++)
 	{
-		if (*format == '%' && (*(format + 1) == 'c' || *(format + 1) == 's' || *(format + 1) == '%'))
+		if (*format == '%' && (*(format + 1) == 'c' || *(format + 1) == 's'
+			|| *(format + 1) == '%' || *(format + 1) == 'd' || *(format + 1) == 'i'
+			|| *(format + 1) == 'b' || *(format + 1) == 'x' || *(format + 1) == 'X'))
 		{
 			format++;
 
